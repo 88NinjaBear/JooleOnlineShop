@@ -12,21 +12,25 @@ namespace Joole.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class tblUser
+    public partial class tblProduct
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblUser()
+        public tblProduct()
         {
-            this.tblManufactures = new HashSet<tblManufacture>();
+            this.tblPropertyValues = new HashSet<tblPropertyValue>();
         }
     
-        public int User_ID { get; set; }
-        public string User_Name { get; set; }
-        public string User_Email { get; set; }
-        public string User_Password { get; set; }
-        public byte[] User_Image { get; set; }
+        public int Product_ID { get; set; }
+        public int Manufacture_ID { get; set; }
+        public int SubCategory_ID { get; set; }
+        public string Product_Name { get; set; }
+        public byte[] Product_Image { get; set; }
+        public string Series { get; set; }
+        public string Model { get; set; }
     
+        public virtual tblManufacture tblManufacture { get; set; }
+        public virtual tblSubCategory tblSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblManufacture> tblManufactures { get; set; }
+        public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
     }
 }

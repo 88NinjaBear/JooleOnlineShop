@@ -33,5 +33,11 @@ namespace JooleOnlineShop.Controllers
             List<User> users = service.GetUserList();
             return View("UserList", users);
         }
+
+        public ActionResult JsonUserList() {
+            Services service = new Services();
+            List<User> users = service.GetUserList();
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
     }
 }
