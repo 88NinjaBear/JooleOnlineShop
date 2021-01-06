@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Joole.Repository.Repositories
 {
-    public interface IRepsitory<TEntity> where TEntity : class {
+    public interface IRepository<TEntity> where TEntity : class {
         TEntity GetByID(int id);
         IEnumerable<TEntity> GetAll();
 
@@ -22,7 +22,7 @@ namespace Joole.Repository.Repositories
 
     }
 
-    public class BaseRepositroy<TEntity> : IRepsitory<TEntity> where TEntity : class{
+    public class BaseRepositroy<TEntity> : IRepository<TEntity> where TEntity : class{
 
         protected readonly DbContext Context;
 
@@ -46,17 +46,17 @@ namespace Joole.Repository.Repositories
             Context.Set<TEntity>().RemoveRange(entities);
         }
 
-        void IRepsitory<TEntity>.Insert(TEntity entity)
+        void IRepository<TEntity>.Insert(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
         }
 
-        void IRepsitory<TEntity>.InsertRange(IEnumerable<TEntity> entities)
+        void IRepository<TEntity>.InsertRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().AddRange(entities);
         }
 
-        void IRepsitory<TEntity>.Update(TEntity entity)
+        void IRepository<TEntity>.Update(TEntity entity)
         { 
 
             // base on business logic

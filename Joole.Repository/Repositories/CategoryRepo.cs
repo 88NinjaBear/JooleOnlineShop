@@ -8,16 +8,13 @@ using Joole.DAL;
 
 namespace Joole.Repository.Repositories
 {
-
-    public interface IUserRepo : IRepository<tblUser> { 
+    public interface ICategoryRepo : IRepository<tblCategory> { 
     
     }
-
-    public class UserRepo : BaseRepositroy<tblUser>, IUserRepo 
+    public class CategoryRepo : BaseRepositroy<tblCategory>, ICategoryRepo
     {
-        public UserRepo(DbContext context) : base(context)
-        {
-
+        public CategoryRepo(DbContext context) : base(context) { 
+        
         }
     }
 }

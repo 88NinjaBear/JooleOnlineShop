@@ -42,6 +42,35 @@ namespace Joole.Service
             }
             return users;
         }
+
+        public List<Category> GetCategoryList() {
+            var dataset = uow.categories.GetAll();
+            List<Category> categories = new List<Category>();
+            foreach (var item in dataset) {
+                Category category = new Category();
+                category.Id = item.Category_ID;
+                category.Name = item.Category_Name;
+                categories.Add(category);
+            }
+            return categories;
+        }
+
+        public List<SubCategory> GetSubCatByCatID(int categoryId) {
+            var dataset = uow.subcategories.GetAll();
+            List<SubCategory> subCategories = new List<SubCategory>();
+            foreach (var item in dataset) {
+                
+                if (item.Category_ID == categoryId) {
+                    SubCategory subCategory = new SubCategory();
+                    subCategory.Id = item.SubCategory_ID;
+                    subCategory.CategoryId = (int)item.Category_ID;
+                    subCategory.Name = item.SubCategory_Name;
+                    subCategories.Add(subCategory);
+                }
+            }
+            return subCategories;
+        }
+
     }
 
     //public class JooleContext : JooleDBEntities {

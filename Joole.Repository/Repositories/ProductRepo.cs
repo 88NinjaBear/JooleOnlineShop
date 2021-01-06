@@ -9,7 +9,7 @@ using Joole.DAL;
 namespace Joole.Repository.Repositories
 {
 
-    public interface IProductRepo : IRepsitory<tblProduct> { 
+    public interface IProductRepo : IRepository<tblProduct> { 
         // define sepcific methods
     }
     public class ProductRepo : BaseRepositroy<tblProduct>, IProductRepo
